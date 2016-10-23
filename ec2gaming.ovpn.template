@@ -1,0 +1,12 @@
+client
+dev tap
+proto udp
+remote IP 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+verb 3
+auth-user-pass /Users/dannyt/Documents/Gaming/ec2gaming.auth
+cipher none
