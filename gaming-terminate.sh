@@ -4,7 +4,7 @@ set -e
 
 source aws-creds.sh
 
-echo "Disconnecting VPN..."
+echo -n "Disconnecting VPN... "
 osascript ec2gaming-vpndown.scpt
 
 # Verify that the gaming stane actually exists (and that there's only one)

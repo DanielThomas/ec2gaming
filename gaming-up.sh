@@ -43,7 +43,7 @@ echo "$IP"
 echo "Waiting for server to become available..."
 while ! ping -c1 $IP &>/dev/null; do sleep 5; done
 
-echo "Connecting VPN..."
+echo -n "Connecting VPN... "
 BACKING_CONFIG=~/Library/Application\ Support/Tunnelblick/Configurations/ec2gaming.tblk/Contents/Resources/config.ovpn
 if [ ! -f "$BACKING_CONFIG" ]; then
     sed "s/IP/$IP/g" ec2gaming.ovpn.template > ec2gaming.ovpn
