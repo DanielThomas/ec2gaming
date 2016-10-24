@@ -2,8 +2,6 @@
 
 set -e
 
-source aws-creds.sh
-
 # Get the current lowest price for the GPU machine we want (we'll be bidding a cent above)
 echo -n "Getting lowest g2.2xlarge bid... "
 PRICE=$( aws ec2 describe-spot-price-history --instance-types g2.2xlarge --product-descriptions "Windows" --start-time `date +%s` | jq --raw-output '.SpotPriceHistory[].SpotPrice' | sort | head -1 )
@@ -17,6 +15,14 @@ if [ $( echo "$AMI_SEARCH" | jq '.Images | length' ) -eq "0" ]; then
 fi
 AMI_ID=$( echo $AMI_SEARCH | jq --raw-output '.Images[0].ImageId' )
 echo $AMI_ID
+
+echo -n "Looking for the ec2-gaming security group... "
+EC2_SECURITY_GROUP_ID=$(aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | select (.GroupName == "ec2-gaming") | .GroupId')
+if [ -z "$EC2_SECURITY_GROUP_ID" ]; then
+  echo "not found. You must have a security group called 'ec2-gaming'"
+  exit 1
+fi
+echo $EC2_SECURITY_GROUP_ID
 
 echo -n "Creating spot instance request... "
 SPOT_INSTANCE_ID=$( aws ec2 request-spot-instances --spot-price $( bc <<< "$PRICE + 0.01" ) --launch-specification "

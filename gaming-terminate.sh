@@ -2,8 +2,6 @@
 
 set -e
 
-source aws-creds.sh
-
 echo -n "Disconnecting VPN... "
 osascript ec2gaming-vpndown.scpt
 
