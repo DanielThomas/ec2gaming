@@ -9,10 +9,8 @@ http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gamin
 From a terminal:
 
 - Install required components:
-```
-brew install awscli jq
-brew cask install steam tunnelblick
-```
+```brew install awscli jq
+brew cask install steam tunnelblick```
 - Install Microsoft Remote Desktop from the App Store
 - From the terminal, run `aws configure` to configure your AWS credentials and region
 - Clone this repository to a convenient location (I use `~/.ec2gaming` and put it on the `PATH`)
