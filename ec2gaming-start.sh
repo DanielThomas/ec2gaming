@@ -68,7 +68,7 @@ echo -n "Getting ip address... "
 IP=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" | jq --raw-output '.Reservations[0].Instances[0].PublicIpAddress')
 echo "$IP"
 
-echo -n "Waiting for server to become available..."
+echo -n "Waiting for server to become available... "
 while ! nc -z "$IP" 3389 > /dev/null; do sleep 5; done;
 echo "up!"
 
