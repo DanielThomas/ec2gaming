@@ -48,8 +48,12 @@ Unfortunately, you can't install games larger than the freespace on `C:` with th
 
 - Run `./ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
 - Create a `ec2gaming.auth` file in the `ec2gaming` location (it's `.gitignored`) with two lines, it'll be used to authenticate the VPN for gaming:
+
+    ```
     administrator
     <new password>
+    ```
+
 - Put the repository on your `PATH` for convenience
 
 # Gaming!
