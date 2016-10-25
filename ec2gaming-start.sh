@@ -68,15 +68,12 @@ echo -n "Getting ip address... "
 IP=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" | jq --raw-output '.Reservations[0].Instances[0].PublicIpAddress')
 echo "$IP"
 
-echo "Waiting for server to become available..."
-while ! nc -z "$IP" 3389; do sleep 5; done;
+echo -n "Waiting for server to become available..."
+while ! nc -z "$IP" 3389 > /dev/null; do sleep 5; done;
+echo "up!"
 
 echo -n "Generating RDP configuration... "
-if [ ! -f ec2gaming.auth ]; then
-    sed "s/IP/$IP/g;s/rRmbgYum8g/$(tail -1 ec2gaming.auth)/g" ec2gaming.rdp.template > ec2gaming.rdp
-else
-  sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
-fi
+sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
 
 if [ "$BOOTSTRAP" -eq "1" ]; then
   echo "Starting Remote Desktop..."

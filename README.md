@@ -27,9 +27,8 @@ From a terminal:
 Once the instance is running, a RDP session will be opened automatically. Login using the `administrator` account with the password `rRmbgYum8g` and change the password.
 
 - Update Steam and login
-- Install several of the games you intend to play to install the redists
-    - EBS is super-slow to start due to initialization overhead, so you want to avoid this overhead later
-    - Make sure you install to `Z:`
+    - Go to Settings -> In-Home Streaming -> Advanced Host Options and enable 'Hardware Encoding' and 'Prioritize network traffic'
+- Install several of the games you intend to play to `Z:`. EBS is super-slow to start due to initialization overhead, so you want to avoid that later when starting games
 - Run Windows Update
 
 ## Windows automatic login
