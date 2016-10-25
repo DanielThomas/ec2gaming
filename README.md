@@ -65,7 +65,7 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
 
 # Periodic maintenance
 
-You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI.
+This configuration differs from the original blog post, in that the goal is to keep the AMI identical from session to session. You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
 
 # Help
 
