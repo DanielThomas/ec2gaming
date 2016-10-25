@@ -29,8 +29,8 @@ Once the instance is running, a RDP session will be opened automatically:
 
 ## Steam configuration
 
-After updating Steam and logging in:
-
+- Steam will run and update automatically
+- Login and save your password
 - Go to Settings -> In-Home Streaming -> Advanced Host Options and enable 'Hardware Encoding' and 'Prioritize network traffic'
 - Install and run several of the games you intend to play to `Z:`. EBS is super-slow to start due to initialization overhead, so you want to avoid the overhead of first-time setup later
 
