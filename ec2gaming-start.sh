@@ -74,9 +74,7 @@ echo -n "Waiting for server to become available... "
 while ! nc -z "$IP" 3389 &> /dev/null; do sleep 5; done;
 echo "up!"
 
-echo "Generating RDP configuration... "
 sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
-
 if [ "$BOOTSTRAP" -eq "1" ]; then
   echo "Starting Remote Desktop..."
   open ec2gaming.rdp
