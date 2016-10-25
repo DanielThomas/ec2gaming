@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 if [ -z ${1+x} ]; then
     echo "Usage: ec2gaming <command>"
-    echo "Supported commands are: start, snapshot and terminate"
+    echo "Supported commands are: start, status, snapshot and terminate"
     exit
 fi
 
