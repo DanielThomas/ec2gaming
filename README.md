@@ -1,6 +1,6 @@
 # macOS EC2 Gaming
 
-Quick-start configuration for macOS EC2 gaming, based on [Larry Gadea's](http://lg.io/) excellent work.
+Ready-made configuration for macOS EC2 gaming, based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # First-time configuration
 
