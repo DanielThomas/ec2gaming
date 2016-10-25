@@ -1,6 +1,6 @@
 # AWS EC2 Gaming
 
-Quick-start configuration for macOS based on Larry Gadea's excellent work here:
+Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent work here:
 
 http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
 
