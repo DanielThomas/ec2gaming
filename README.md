@@ -1,8 +1,6 @@
 # macOS EC2 Gaming
 
-Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent work here:
-
-http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
+Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent work.
 
 # First-time configuration
 
@@ -65,6 +63,13 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
 - Wait for the notification that the remote gaming host is available for home streaming
 - When you're done, run `ec2gaming terminate`
 
-# Resources
+# Periodic maintenance
 
-- The cloudygamer subreddit is a great resource - https://www.reddit.com/r/cloudygamer/
+You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI.
+
+# Help
+
+The original blog posts and the cloudygamer subreddit are great resources:
+
+- http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
+- https://www.reddit.com/r/cloudygamer/
