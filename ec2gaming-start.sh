@@ -11,7 +11,7 @@ num_images() {
 }
 
 describe_security_group() {
-  aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | select (.GroupName == "$1") | .GroupId'
+  aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | select (.GroupName == "'"$1"'") | .GroupId'
 }
 
 # Get the current lowest price for the GPU machine we want (we'll be bidding a cent above)
@@ -36,11 +36,11 @@ echo "$AMI_ID"
 echo -n "Looking for security groups... "
 EC2_SECURITY_GROUP_ID=$(describe_security_group ec2-gaming)
 if [ -z "$EC2_SECURITY_GROUP_ID" ]; then
-  echo -n "Creating security groups... "
-  aws ec2 create-security-group --group-name ec2-gaming-rdp --description "EC2 Gaming Direct RDP"
+  echo -n "not found. Creating security groups... "
+  aws ec2 create-security-group --group-name ec2-gaming-rdp --description "EC2 Gaming RDP" > /dev/null
   aws ec2 authorize-security-group-ingress --group-name ec2-gaming-rdp --protocol tcp --port 3389 --cidr "0.0.0.0/0"
 
-  aws ec2 create-security-group --group-name ec2-gaming --description "EC2 Gaming"
+  aws ec2 create-security-group --group-name ec2-gaming --description "EC2 Gaming" > /dev/null
   aws ec2 authorize-security-group-ingress --group-name ec2-gaming --protocol tcp --port 1194 --cidr "0.0.0.0/0"
   aws ec2 authorize-security-group-ingress --group-name ec2-gaming --protocol udp --port 1194 --cidr "0.0.0.0/0"
   aws ec2 authorize-security-group-ingress --group-name ec2-gaming --protocol icmp --port 8 --cidr "0.0.0.0/0"

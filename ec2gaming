@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./ec2gaming-$1.sh
