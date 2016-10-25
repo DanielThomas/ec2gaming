@@ -26,11 +26,13 @@ The goal is to create a solid baseline that can be snapshotted to an AMI for fut
 
 - Update Steam and login
 - Install several of the games you intend to play to install the redists
+    - EBS is super-slow to start due to initialization overhead, so you want to avoid this overhead later
+    - Make sure you install to `Z:`
 - Run Windows Update
 
 ## Automatic login
 
-Use Autologin to set the instance to automatically login - https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
+Use Autologin to set the instance to automatically login: https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
 ## Remote install
 
