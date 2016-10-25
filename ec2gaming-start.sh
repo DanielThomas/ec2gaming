@@ -71,7 +71,7 @@ IP=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" | jq --raw-output 
 echo "$IP"
 
 echo -n "Waiting for server to become available... "
-while ! nc -z "$IP" 3389 > /dev/null; do sleep 5; done;
+while ! nc -z "$IP" 3389 &> /dev/null; do sleep 5; done;
 echo "up!"
 
 echo "Generating RDP configuration... "
