@@ -43,6 +43,10 @@ The Steam remote install feature assumes the default Stream library, even if a s
 
 Unfortunately, you can't install games larger than the freespace on `C:` with this approach, but in that case you can use RDP, and this avoids having to RDP for every installation.
 
+## Cloud sync My Documents
+
+Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
+
 ## Final steps
 
 - Run `./ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
