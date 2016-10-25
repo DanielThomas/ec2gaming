@@ -30,11 +30,11 @@ The goal is to create a solid baseline that can be snapshotted to an AMI for fut
     - Make sure you install to `Z:`
 - Run Windows Update
 
-## Automatic login
+## Windows automatic login
 
 Use Autologin to set the instance to automatically login: https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
-## Remote install
+## Steam remote install
 
 The Steam remote install feature assumes the default Stream library, even if a second library is available and set to deafult. So, to install games to the emphemeral storage on `Z:\` remotely, we create a junction on instance startup:
 
