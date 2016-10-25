@@ -1,4 +1,4 @@
-# AWS EC2 Gaming
+# macOS EC2 Gaming
 
 Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent work here:
 
