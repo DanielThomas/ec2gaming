@@ -8,5 +8,5 @@ persist-key
 persist-tun
 ca ec2gaming-ca.crt
 verb 3
-auth-user-pass /Users/dannyt/Documents/Gaming/ec2gaming.auth
+auth-user-pass AUTH
 cipher none

@@ -14,6 +14,8 @@ describe_security_group() {
   aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | select (.GroupName == "'"$1"'") | .GroupId'
 }
 
+BOOTSTRAP=0
+
 # Get the current lowest price for the GPU machine we want (we'll be bidding a cent above)
 echo -n "Getting lowest g2.2xlarge bid... "
 PRICE="$(aws ec2 describe-spot-price-history --instance-types g2.2xlarge --product-descriptions "Windows" --start-time "$(date +%s)" | jq --raw-output '.SpotPriceHistory[].SpotPrice' | sort | head -1)"
@@ -82,13 +84,13 @@ else
   echo -n "Connecting VPN... "
   BACKING_CONFIG=~/Library/Application\ Support/Tunnelblick/Configurations/ec2gaming.tblk/Contents/Resources/config.ovpn
   if [ ! -f "$BACKING_CONFIG" ]; then
-      sed "s/IP/$IP/g" ec2gaming.ovpn.template > ec2gaming.ovpn
+      sed "s#IP#$IP#g;s#AUTH#$(pwd)/ec2gaming.auth#g" ec2gaming.ovpn.template > ec2gaming.ovpn
       open ec2gaming.ovpn
       echo "Waiting 10 seconds for import..."
       sleep 10
   else
     # the authentication prompt on copy will block, avoids the messy sleep
-    sed "s/IP/$IP/g" ec2gaming.ovpn.template > "$BACKING_CONFIG"
+    sed "s#IP#$IP#g;s#AUTH#$(pwd)/ec2gaming.auth#g" ec2gaming.ovpn.template > "$BACKING_CONFIG"
   fi
   osascript ec2gaming-vpnup.scpt
 
