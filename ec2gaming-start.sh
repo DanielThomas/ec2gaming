@@ -37,16 +37,21 @@ echo -n "Looking for security groups... "
 EC2_SECURITY_GROUP_ID=$(describe_security_group ec2gaming)
 if [ -z "$EC2_SECURITY_GROUP_ID" ]; then
   echo -n "not found. Creating security groups... "
+  PING_REQUEST='[{"IpProtocol": "icmp", "FromPort": 8, "ToPort": -1, "IpRanges": [{"CidrIp": "0.0.0.0/0"}]}]'
   aws ec2 create-security-group --group-name ec2gaming-rdp --description "EC2 Gaming RDP" > /dev/null
+  aws ec2 authorize-security-group-ingress --group-name ec2gaming-rdp --ip-permissions "$PING_REQUEST"
   aws ec2 authorize-security-group-ingress --group-name ec2gaming-rdp --protocol tcp --port 3389 --cidr "0.0.0.0/0"
 
   aws ec2 create-security-group --group-name ec2gaming --description "EC2 Gaming" > /dev/null
+  aws ec2 authorize-security-group-ingress --group-name ec2gaming --ip-permissions "$PING_REQUEST"
   aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol tcp --port 1194 --cidr "0.0.0.0/0"
   aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol udp --port 1194 --cidr "0.0.0.0/0"
-  aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol icmp --port 8 --cidr "0.0.0.0/0"
+fi
 
+if [ "$BOOTSTRAP" -eq "1" ]; then
   EC2_SECURITY_GROUP_ID=$(describe_security_group ec2gaming-rdp)
 fi
+
 echo "$EC2_SECURITY_GROUP_ID"
 
 echo -n "Creating spot instance request... "
