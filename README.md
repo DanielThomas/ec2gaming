@@ -61,3 +61,7 @@ Unfortunately, you can't install games larger than the freespace on `C:` with th
 - Run `ec2gaming start`. The instance, VPN and Steam will automatically start
 - Wait for the notification that the remote gaming host is available for home streaming
 - When you're done, run `ec2gaming terminate`
+
+# Resources
+
+- The cloudygamer subreddit is a great resource - https://www.reddit.com/r/cloudygamer/
