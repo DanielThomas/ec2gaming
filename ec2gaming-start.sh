@@ -36,19 +36,12 @@ echo "$AMI_ID"
 echo -n "Looking for security groups... "
 EC2_SECURITY_GROUP_ID=$(describe_security_group ec2gaming)
 if [ -z "$EC2_SECURITY_GROUP_ID" ]; then
-  echo -n "not found. Creating security groups... "
-  aws ec2 create-security-group --group-name ec2gaming-rdp --description "EC2 Gaming RDP" > /dev/null
-  aws ec2 authorize-security-group-ingress --group-name ec2gaming-rdp --protocol tcp --port 3389 --cidr "0.0.0.0/0"
-  aws ec2 authorize-security-group-ingress --group-name ec2gaming-rdp --protocol tcp --port 1194 --cidr "0.0.0.0/0"
-  aws ec2 authorize-security-group-ingress --group-name ec2gaming-rdp --protocol udp --port 1194 --cidr "0.0.0.0/0"
-
+  echo -n "not found. Creating security group... "
   aws ec2 create-security-group --group-name ec2gaming --description "EC2 Gaming" > /dev/null
+  aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol tcp --port 3389 --cidr "0.0.0.0/0"
   aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol tcp --port 1194 --cidr "0.0.0.0/0"
   aws ec2 authorize-security-group-ingress --group-name ec2gaming --protocol udp --port 1194 --cidr "0.0.0.0/0"
-fi
-
-if [ "$BOOTSTRAP" -eq "1" ]; then
-  EC2_SECURITY_GROUP_ID=$(describe_security_group ec2gaming-rdp)
+  EC2_SECURITY_GROUP_ID=$(describe_security_group ec2gaming)
 fi
 
 echo "$EC2_SECURITY_GROUP_ID"
@@ -76,21 +69,19 @@ IP=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" | jq --raw-output 
 echo "$IP"
 
 echo "Waiting for server to become available..."
-while ! nc -z "$IP" 1194; do sleep 5; done;
+while ! nc -z "$IP" 3389; do sleep 5; done;
+
+echo -n "Generating RDP configuration... "
+if [ ! -f ec2gaming.auth ]; then
+    sed "s/IP/$IP/g;s/rRmbgYum8g/$(tail -1 ec2gaming.auth)/g" ec2gaming.rdp.template > ec2gaming.rdp
+else
+  sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
+fi
 
 if [ "$BOOTSTRAP" -eq "1" ]; then
-  echo -n "Generating RDP configuration... "
-  sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
-  echo "remote host is $IP"
-
   echo "Starting Remote Desktop..."
   open ec2gaming.rdp
 else
-  VPN_IP="10.8.0.1"
-  echo -n "Generating RDP configuration... "
-  sed "s/IP/$VPN_IP/g" ec2gaming.rdp.template > ec2gaming.rdp
-  echo "remote host is $VPN_IP"
-
   echo -n "Connecting VPN... "
   BACKING_CONFIG=~/Library/Application\ Support/Tunnelblick/Configurations/ec2gaming.tblk/Contents/Resources/config.ovpn
   if [ ! -f "$BACKING_CONFIG" ]; then
