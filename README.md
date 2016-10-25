@@ -4,7 +4,7 @@ Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent
 
 http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
 
-# First-time Configuration
+# First-time configuration
 
 The goal is to create a solid baseline that can be snapshotted to an AMI for future use, that requires zero intervention on startup and takes the minimum amount of time to install games.
 
