@@ -4,7 +4,9 @@ Quick-start configuration for macOS EC2 gaming, based on Larry Gadea's excellent
 
 http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
 
-# Bootstrap
+# First-time Configuration
+
+The goal is to create a solid baseline that can be snapshotted to an AMI for future use, that requires zero intervention on startup and takes the minimum amount of time to install games.
 
 From a terminal:
 
@@ -18,11 +20,9 @@ brew cask install steam tunnelblick
 - Clone this repository to a convenient location (I use `~/.ec2gaming` and put it on the `PATH`)
 - Run `./ec2gaming start`
 
-Once the instance is running, a RDP session will be opened automatically. Login using the `administrator` account with the password `rRmbgYum8g`, change the password.
+## Windows configuration
 
-# First-time Configuration
-
-The goal is to create a solid baseline that can be snapshotted to an AMI for future use, that requires zero intervention on startup and takes the minimum amount of time to install games.
+Once the instance is running, a RDP session will be opened automatically. Login using the `administrator` account with the password `rRmbgYum8g` and change the password.
 
 - Update Steam and login
 - Install several of the games you intend to play to install the redists
