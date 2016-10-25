@@ -15,9 +15,9 @@ fi
 INSTANCE_ID=$( echo "$INSTANCES" | jq --raw-output '.Reservations[0].Instances[0].InstanceId' )
 echo "$INSTANCE_ID"
 
-# Only allow one ec2-gaming AMI to exist
-echo -n "Checking if an AMI 'ec2-gaming' already exists... "
-AMIS=$( aws ec2 describe-images --owner self --filters Name=name,Values=ec2-gaming )
+# Only allow one ec2gaming AMI to exist
+echo -n "Checking if an AMI 'ec2gaming' already exists... "
+AMIS=$( aws ec2 describe-images --owner self --filters Name=name,Values=ec2gaming )
 if [ $( echo "$AMIS" | jq '.Images | length' ) -ne "0" ]; then
 	AMI_ID=$( echo "$AMIS" | jq --raw-output '.Images[0].ImageId' )
 	echo "yes, $AMI_ID"
@@ -31,7 +31,7 @@ fi
 
 # Create an AMI from the existing instance (so we can restore it next time)
 echo -n "Starting AMI creation... "
-AMI_ID=$( aws ec2 create-image --instance-id "$INSTANCE_ID" --name "ec2-gaming" | jq --raw-output '.ImageId' )
+AMI_ID=$( aws ec2 create-image --instance-id "$INSTANCE_ID" --name "ec2gaming" | jq --raw-output '.ImageId' )
 echo "$AMI_ID"
 
 echo "Waiting for AMI to be created before terminating instance..."
