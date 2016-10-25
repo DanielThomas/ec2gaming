@@ -14,7 +14,7 @@ From a terminal:
 - Install Microsoft Remote Desktop from the App Store
 - From the terminal, run `aws configure` to configure your AWS credentials and region
 - Clone this repository
-- Run `./gaming-up.sh`
+- Run `./ec2gaming start`
 
 Once the instance is running, a RDP session will be opened automatically. Login using the `administrator` account with the password `rRmbgYum8g`, change the password.
 
@@ -40,13 +40,14 @@ Unfortunately, you can't install games larger than the freespace on `C:` with th
 
 ## Final steps
 
-# Run `./gaming-down.sh` to snapshot the EBS volume and create a new AMI
+# Run `./ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
 # Create a file `ec2gaming.auth` file (it's `.gitignored`) with two lines, it'll be used to authenticate the VPN for gaming:
     administrator
     <new password>
+# Put the repository on your `PATH` for convenience
 
-# Gaming
+# Gaming!
 
-- Run `./ec2gaming-start.sh`. The instance, VPN and Steam will automatically start
+- Run `ec2gaming start`. The instance, VPN and Steam will automatically start
 - Wait for the notification that the remote gaming host is available for home streaming
-- When you're done, run `./ec2gaming-terminate.sh`
+- When you're done, run `ec2gaming terminate`

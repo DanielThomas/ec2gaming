@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
+if [ -z ${1+x} ]; then
+    echo "Usage: ec2gaming <command>"
+    echo "Supported commands are: start, snapshot and terminate"
+    exit
+fi
+
+cd "$(dirname "$0")" || exit
 ./ec2gaming-$1.sh
