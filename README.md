@@ -8,7 +8,8 @@ The goal is to create a solid baseline that can be snapshotted to an AMI for fut
 
 From a terminal:
 
-- Install required components:
+- Clone this repository to a convenient location and put it on the `PATH`
+- Install required components using Homebrew:
 
     ```
     brew install awscli jq
@@ -16,9 +17,8 @@ From a terminal:
     ```
 
 - Install Microsoft Remote Desktop from the App Store
-- From the terminal, run `aws configure` to configure your AWS credentials and region
-- Clone this repository to a convenient location (I use `~/.ec2gaming` and put it on the `PATH`)
-- Run `./ec2gaming start`
+- Run `aws configure` to configure your AWS credentials and region
+- Run `ec2gaming start`
 
 ## Windows configuration
 
@@ -47,7 +47,7 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
 
 ## Final steps
 
-- Run `./ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
+- Run `ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
 - Create a `ec2gaming.auth` file in the `ec2gaming` location (it's `.gitignored`) with two lines, it'll be used to authenticate the VPN for gaming:
 
     ```
