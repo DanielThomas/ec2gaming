@@ -11,10 +11,10 @@ The goal is to create a solid baseline that can be snapshotted to an AMI for fut
 From a terminal:
 
 - Install required components:
-```
-brew install awscli jq
-brew cask install steam tunnelblick
-```
+    ```
+    brew install awscli jq
+    brew cask install steam tunnelblick
+    ```
 - Install Microsoft Remote Desktop from the App Store
 - From the terminal, run `aws configure` to configure your AWS credentials and region
 - Clone this repository to a convenient location (I use `~/.ec2gaming` and put it on the `PATH`)
@@ -36,7 +36,7 @@ Use Autologin to set the instance to automatically login: https://technet.micros
 
 ## Steam remote install
 
-The Steam remote install feature assumes the default Stream library, even if a second library is available and set to deafult. So, to install games to the emphemeral storage on `Z:\` remotely, we create a junction on instance startup:
+The Steam remote install feature assumes the default Stream library, even if a second library is available and set to default. So, to install games to the emphemeral storage on `Z:\` remotely, we create a junction on instance startup:
 
 - Copy `bootstrap/steamapps-junction.bat` to `C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
