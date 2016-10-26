@@ -42,11 +42,13 @@ The Steam remote install feature assumes the default Stream library, even if a s
 
 - Copy `bootstrap/steamapps-junction.bat` to `C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
-Unfortunately, you can't install games larger than the freespace on `C:` with this approach, but in that case you can use RDP, and this avoids having to RDP for every installation.
+Unfortunately, you can't install games larger than the freespace on `C:` with this approach, but in that case you can use RDP and this avoids having to RDP for every installation.
 
 ## Windows automatic login
 
-Use Autologin to set the instance to automatically login: https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
+Use Autologin to set the instance to automatically login, so Steam starts automatically and it's not necessary to RDP into the instance to start gaming:
+
+https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
 ## Cloud sync My Documents
 
