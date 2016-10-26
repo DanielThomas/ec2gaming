@@ -29,6 +29,10 @@ Once the instance is running, a RDP session will be opened automatically:
 
 Note that EBS is super-slow at startup as blocks come off the snapshot, so expect the instance to be sluggish as it warms up. It only affects file operations on `C:\` and won't affect gaming performance later.
 
+## OpenVPN configuration
+
+Edit `C:\Program Files\OpenVPN\config\server.ovpn` and add `cipher none` to the end of the file. We're using the VPN for the tunnel, not security, and we don't want the overhead of encryption.
+
 ## Steam configuration
 
 - Steam will run and update automatically
