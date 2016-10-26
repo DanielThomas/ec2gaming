@@ -10,11 +10,13 @@ It also provides helpful commands to automate repetitive tasks:
 
     macOS EC2 Gaming with Steam In-Home Streaming
 
-    Usage: ec2gaming <command>
+    usage: ec2gaming <command>
 
-    To game, run start. For additional help, go to https://github.com/DanielThomas/ec2gaming#help
+    Gaming commands
+    start     Start gaming
+    stop      Stop gaming
 
-    Full list of supported commands:
+    All supported commands
     instance-ip
     instance
     rdp
