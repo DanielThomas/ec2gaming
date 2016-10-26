@@ -77,6 +77,16 @@ Use Autologin to set the instance to automatically login, so Steam starts automa
 
 https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
+## Update NVIDIA drivers
+
+Driver 373.06 is the latest driver version that has the K520 included in the device list, later versions are missing `DEV_118A` completely:
+
+http://www.nvidia.com/download/driverResults.aspx/108323/en-us
+
+See here for background:
+
+https://www.reddit.com/r/cloudygamer/comments/59245r/nvidia_driver_package_37563_unable_to_detect/
+
 ## Cloud sync My Documents
 
 WIP - need to figure out how to allow sync that doesn't delete files if they're missing on the host.
