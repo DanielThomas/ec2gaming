@@ -58,6 +58,8 @@ https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
 Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
 
+Move the My Documents location to `Z:\`, allowing the sync to replace the files and keep them out of the instance snapshot.
+
 ## Steam client configuration
 
 Back on your Mac, got to Steam Home-Streaming settings, and:
