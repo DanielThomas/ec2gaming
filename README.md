@@ -1,6 +1,6 @@
 # macOS EC2 Gaming
 
-Utilities for macOS EC2 gaming, based on [Larry Gadea's](http://lg.io/) excellent work.
+Utilities to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # First-time configuration
 
