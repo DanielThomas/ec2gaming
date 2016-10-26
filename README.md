@@ -27,12 +27,14 @@ Once the instance is running, a RDP session will be opened automatically:
 - Login using the `administrator` account with the password `rRmbgYum8g` and change the password.
 - Run Windows Update
 
+Note that EBS is super-slow at startup as blocks come off the snapshot, so expect the instance to be sluggish as it warms up. It only affects file operations on `C:\` and won't affect gaming performance later.
+
 ## Steam configuration
 
 - Steam will run and update automatically
 - Login and save your password
 - Go to Settings -> In-Home Streaming -> Advanced Host Options and enable 'Hardware Encoding' and 'Prioritize network traffic'
-- Install and run several of the games you intend to play to `Z:`. EBS is super-slow to start due to initialization overhead, so you want to avoid the overhead of first-time setup later
+- Install and run several of the games you intend to play to `Z:\`
 
 ## Steam remote install to ephemeral storage
 
