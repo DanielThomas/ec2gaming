@@ -34,7 +34,7 @@ Note that EBS is super-slow at startup as blocks come off the snapshot, so expec
 - Steam will run and update automatically
 - Login and save your password
 - Go to Settings -> In-Home Streaming -> Advanced Host Options and enable 'Hardware Encoding' and 'Prioritize network traffic'
-- Install and run several of the games you intend to play to `Z:\`
+- Install and run several of the games you intend to play to `Z:\`. This performs first-time installation, avoiding the redistributable installation overhead. Delete local files once you're done
 
 ## Steam remote install to ephemeral storage
 
