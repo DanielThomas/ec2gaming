@@ -1,10 +1,10 @@
 # macOS EC2 Gaming
 
-Ready-made configuration for macOS EC2 gaming, based on [Larry Gadea's](http://lg.io/) excellent work.
+Utilities for macOS EC2 gaming, based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # First-time configuration
 
-The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create an image, that requires zero intervention on startup, allows remote installs and takes the minimum amount of time to install.
+The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create an image that requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
 
 From a terminal:
 
