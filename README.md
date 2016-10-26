@@ -56,9 +56,9 @@ https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
 ## Cloud sync My Documents
 
-Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
+WIP - need to figure out how to allow sync that doesn't delete files if they're missing on the host.
 
-Move the My Documents location to `Z:\`, allowing the sync to replace the files and keep them out of the instance snapshot.
+Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
 
 ## Steam client configuration
 
