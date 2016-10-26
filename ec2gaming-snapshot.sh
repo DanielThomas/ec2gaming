@@ -2,9 +2,6 @@
 
 set -e
 
-echo -n "Disconnecting VPN... "
-osascript ec2gaming-vpndown.scpt
-
 INSTANCE_ID=$(./ec2gaming-instance.sh)
 
 # Only allow one ec2gaming AMI to exist
