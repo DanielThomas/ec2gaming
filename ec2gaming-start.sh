@@ -67,6 +67,7 @@ echo "Removing the spot instance request..."
 aws ec2 cancel-spot-instance-requests --spot-instance-request-ids "$SPOT_INSTANCE_ID" > /dev/null
 
 echo -n "Waiting for server to become available... "
+IP=$(./ec2gaming-instance-ip.sh)
 while ! nc -z "$IP" 3389 &> /dev/null; do sleep 5; done;
 echo "up!"
 
