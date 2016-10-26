@@ -66,31 +66,14 @@ echo "$INSTANCE_ID"
 echo "Removing the spot instance request..."
 aws ec2 cancel-spot-instance-requests --spot-instance-request-ids "$SPOT_INSTANCE_ID" > /dev/null
 
-echo -n "Getting ip address... "
-IP=$(aws ec2 describe-instances --instance-ids "$INSTANCE_ID" | jq --raw-output '.Reservations[0].Instances[0].PublicIpAddress')
-echo "$IP"
-
 echo -n "Waiting for server to become available... "
 while ! nc -z "$IP" 3389 &> /dev/null; do sleep 5; done;
 echo "up!"
 
-sed "s/IP/$IP/g" ec2gaming.rdp.template > ec2gaming.rdp
 if [ "$BOOTSTRAP" -eq "1" ]; then
-  echo "Starting Remote Desktop..."
-  open ec2gaming.rdp
+  ./ec2gaming-rdp.sh
 else
-  echo -n "Connecting VPN... "
-  BACKING_CONFIG=~/Library/Application\ Support/Tunnelblick/Configurations/ec2gaming.tblk/Contents/Resources/config.ovpn
-  if [ ! -f "$BACKING_CONFIG" ]; then
-      sed "s#IP#$IP#g;s#AUTH#$(pwd)/ec2gaming.auth#g" ec2gaming.ovpn.template > ec2gaming.ovpn
-      open ec2gaming.ovpn
-      echo "Waiting 10 seconds for import..."
-      sleep 10
-  else
-    # the authentication prompt on copy will block, avoids the messy sleep
-    sed "s#IP#$IP#g;s#AUTH#$(pwd)/ec2gaming.auth#g" ec2gaming.ovpn.template > "$BACKING_CONFIG"
-  fi
-  osascript ec2gaming-vpnup.scpt
+  ./ec2gaming-vpnup.sh
 
   echo "Starting Steam..."
   open steam://

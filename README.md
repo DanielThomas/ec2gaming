@@ -70,7 +70,7 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
 - Run `ec2gaming start`. The instance, VPN and Steam will automatically start
 - Wait for the notification that the remote gaming host is available for home streaming
 - Enjoy!
-- When you're done, run `ec2gaming terminate`
+- When you're done, run `ec2gaming stop`
 
 # Periodic maintenance
 

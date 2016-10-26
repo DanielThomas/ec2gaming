@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")" || exit
+
 if [ -z ${1+x} ]; then
     echo "Usage: ec2gaming <command>"
-    echo "Supported commands are: start, status, snapshot and terminate"
+    echo
+    echo "To game, run 'start'!"
+    echo
+    echo "Full list of supported commands:"
+    find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'
     exit
 fi
 
-cd "$(dirname "$0")" || exit
 ./ec2gaming-$1.sh
