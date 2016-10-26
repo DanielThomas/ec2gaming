@@ -10,6 +10,10 @@ if [ -z ${1+x} ]; then
     echo "start     Start gaming"
     echo "stop      Stop gaming"
     echo
+    echo "Maintenance commands"
+    echo "rdp       Remote desktop connection"
+    echo "snapshot  Snapshot the instance and recreate AMI"
+    echo
     echo "All supported commands"
     find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'
     echo

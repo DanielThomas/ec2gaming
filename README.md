@@ -4,9 +4,13 @@ Scripts to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](h
 
 # Features
 
-The scripts streamline the first time setup, by bootstrapping from the ec2gaming AMI, creating security groups, and launching RDP settings. Once the first time setup is complete, the `start` command automatically brings up the gaming instance, connects the VPN and Steam.
+These scripts streamline the first time setup:
 
-It also provides helpful commands to automate repetitive tasks:
+- Bootstraps from the public ec2gaming AMI
+- Creates security groups
+- Launches RDP automatically
+
+Once the first time setup is complete, the `start` command automatically brings up the gaming instance, connects the VPN and Steam. They also provides helpful commands to automate repetitive tasks:
 
     macOS EC2 Gaming with Steam In-Home Streaming
 
@@ -15,6 +19,10 @@ It also provides helpful commands to automate repetitive tasks:
     Gaming commands
     start     Start gaming
     stop      Stop gaming
+
+    Maintenance commands
+    rdp       Remote desktop connection
+    snapshot  Snapshot the instance and recreate AMI
 
     All supported commands
     instance-ip
@@ -27,9 +35,13 @@ It also provides helpful commands to automate repetitive tasks:
     vpndown
     vpnup
 
+    For additional help, go to https://github.com/DanielThomas/ec2gaming#help
+
 # First-time configuration
 
 The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create an image that requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
+
+These steps assume that you already have an Amazon AWS account, and have generated credentials from the AWS Console.
 
 From a terminal:
 
@@ -43,7 +55,7 @@ From a terminal:
 
 - Install Microsoft Remote Desktop from the App Store
 - Run `aws configure` to configure your AWS credentials and region
-- Run `ec2gaming start`
+- Run `ec2gaming start` to bootstrap an instance
 
 ## Windows configuration
 
