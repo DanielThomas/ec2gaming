@@ -1,6 +1,29 @@
 # macOS EC2 Gaming
 
-Utilities to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
+Scripts to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
+
+# Features
+
+The scripts streamline the first time setup, by bootstrapping from the ec2gaming AMI, creating security groups, and launching RDP settings. Once the first time setup is complete, the `start` command automatically brings up the gaming instance, connects the VPN and Steam.
+
+It also provides helpful commands to automate repetitive tasks:
+
+    macOS EC2 Gaming with Steam In-Home Streaming
+
+    Usage: ec2gaming <command>
+
+    To game, run start. For additional help, go to https://github.com/DanielThomas/ec2gaming#help
+
+    Full list of supported commands:
+    instance-ip
+    instance
+    rdp
+    snapshot
+    start
+    stop
+    terminate
+    vpndown
+    vpnup
 
 # First-time configuration
 
