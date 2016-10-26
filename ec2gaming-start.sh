@@ -2,6 +2,8 @@
 
 set -e
 
+SPOT_PRICE_BUFFER=0.10
+
 describe_gaming_image() {
   aws ec2 describe-images --owner "$1" --filters Name=name,Values=ec2gaming
 }
@@ -20,6 +22,9 @@ BOOTSTRAP=0
 echo -n "Getting lowest g2.2xlarge bid... "
 PRICE="$(aws ec2 describe-spot-price-history --instance-types g2.2xlarge --product-descriptions "Windows" --start-time "$(date +%s)" | jq --raw-output '.SpotPriceHistory[].SpotPrice' | sort | head -1)"
 echo "$PRICE"
+
+FINAL_SPOT_PRICE=$(bc <<< "$PRICE + $SPOT_PRICE_BUFFER")
+echo "Setting price for spot instance at $FINAL_SPOT_PRICE"
 
 echo -n "Looking for the ec2gaming AMI... "
 AMI_SEARCH=$(describe_gaming_image self)
@@ -49,7 +54,7 @@ fi
 echo "$EC2_SECURITY_GROUP_ID"
 
 echo -n "Creating spot instance request... "
-SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances --spot-price "$(bc <<< "$PRICE + 0.01")" --launch-specification "
+SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances --spot-price "$FINAL_SPOT_PRICE" --launch-specification "
   {
     \"SecurityGroupIds\": [\"$EC2_SECURITY_GROUP_ID\"],
     \"ImageId\": \"$AMI_ID\",
@@ -63,11 +68,16 @@ aws ec2 wait spot-instance-request-fulfilled --spot-instance-request-ids "$SPOT_
 INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --spot-instance-request-ids "$SPOT_INSTANCE_ID" | jq --raw-output '.SpotInstanceRequests[0].InstanceId')
 echo "$INSTANCE_ID"
 
-echo "Removing the spot instance request..."
+echo -n "Removing the spot instance request... "
 aws ec2 cancel-spot-instance-requests --spot-instance-request-ids "$SPOT_INSTANCE_ID" > /dev/null
+echo "done"
+
+echo -n "Waiting for instance IP... "
+aws ec2 wait instance-running --instance-ids "$INSTANCE_ID"
+IP=$(./ec2gaming-instance-ip.sh)
+echo "$IP"
 
 echo -n "Waiting for server to become available... "
-IP=$(./ec2gaming-instance-ip.sh)
 while ! nc -z "$IP" 3389 &> /dev/null; do sleep 5; done;
 echo "up!"
 

@@ -1,4 +1,6 @@
-screen mode id:i:0
+screen mode id:i:1
+desktopwidth:i:1280
+desktopheight:i:1024
 use multimon:i:1
 session bpp:i:24
 full address:s:IP
