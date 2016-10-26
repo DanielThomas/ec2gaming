@@ -54,7 +54,8 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
 
 ## Final steps
 
-- Run `ec2gaming snapshot` to snapshot the EBS volume, create a new AMI and shutdown the instance
+- Run `ec2gaming snapshot` to snapshot the EBS volume and create your AMI
+- Run `ec2gaming terminate` to terminate the instance
 - Create a `ec2gaming.auth` file in the `ec2gaming` location (it's `.gitignored`) with two lines, it'll be used to authenticate the VPN for gaming:
 
     ```

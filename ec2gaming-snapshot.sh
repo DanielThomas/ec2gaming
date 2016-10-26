@@ -34,14 +34,10 @@ echo -n "Starting AMI creation... "
 AMI_ID=$( aws ec2 create-image --instance-id "$INSTANCE_ID" --name "ec2gaming" | jq --raw-output '.ImageId' )
 echo "$AMI_ID"
 
-echo "Waiting for AMI to be created before terminating instance..."
+echo "Waiting for AMI to be created..."
 if ! aws ec2 wait image-available --image-id "$AMI_ID"; then 
-	echo "AMI never finished being created! Instance not terminated!";
+	echo "AMI never finished being created!";
 	exit
 fi
-
-# Now that an image has been created terminate the instance
-echo "Terminating gaming instance..."
-aws ec2 terminate-instances --instance-ids "$INSTANCE_ID" > /dev/null
 
 echo "All done!"
