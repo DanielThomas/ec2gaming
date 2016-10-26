@@ -65,8 +65,6 @@ Use Dropbox, OneDrive or similar to sync My Documents. Steam Cloud will do a dec
     <new password>
     ```
 
-- Put the repository on your `PATH` for convenience
-
 # Gaming!
 
 - Run `ec2gaming start`. The instance, VPN and Steam will automatically start
