@@ -2,9 +2,11 @@
 cd "$(dirname "$0")" || exit
 
 if [ -z ${1+x} ]; then
+    echo "macOS EC2 Gaming with Steam In-Home Streaming"
+    echo
     echo "Usage: ec2gaming <command>"
     echo
-    echo "To game, run 'start'!"
+    echo "To game, run start. For additional help, go to https://github.com/DanielThomas/ec2gaming#help"
     echo
     echo "Full list of supported commands:"
     find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'
