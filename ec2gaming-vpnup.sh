@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-echo -n "Connecting VPN (expect an authentication prompt)... "
+echo -n "Connecting VPN (you may see an authentication prompt)... "
 IP=$(./ec2gaming-instance-ip.sh)
 BACKING_CONFIG=~/Library/Application\ Support/Tunnelblick/Configurations/ec2gaming.tblk/Contents/Resources/config.ovpn
 if [ ! -f "$BACKING_CONFIG" ]; then
