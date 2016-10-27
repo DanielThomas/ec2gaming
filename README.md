@@ -28,8 +28,9 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
     stop      Stop gaming
 
     Maintenance commands
-    rdp       Remote desktop connection
+    rdp       Remote desktop connection (no VPN, requires login)
     snapshot  Snapshot the instance and recreate AMI
+    vnc       VNC session (requires VPN, automatic login)
 
     All supported commands
     instance-ip
@@ -39,10 +40,11 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
     start
     stop
     terminate
+    vnc
     vpndown
     vpnup
 
-    For additional help, go to https://github.com/DanielThomas/ec2gaming#help
+    For help, go to https://www.reddit.com/r/cloudygamer/
 
 # First-time configuration
 
