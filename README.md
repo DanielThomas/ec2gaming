@@ -1,16 +1,24 @@
-# macOS EC2 Gaming
+# ec2gaming - macOS EC2 Gaming
 
 Scripts to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # Features
 
-These scripts streamline the first time setup:
+These scripts improve the ergonomics of gaming on EC2, and simplify the first-time setup of your AMI. After following the first-time configuration below, the instance requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
 
-- Bootstraps from the public ec2gaming AMI
+On first `start` the scripts:
+
+- Bootstrap from the public ec2gaming AMI
 - Creates security groups
 - Launches RDP automatically
 
-Once the first time setup is complete, the `start` command automatically brings up the gaming instance, connects the VPN and Steam. They also provides helpful commands to automate repetitive tasks:
+Once the first time setup is complete, `start` then:
+
+- Brings up the gaming instance
+- Connects the VPN
+- Starts Steam
+
+The `ec2gaming` launcher provides helpful commands to ease starting a gaming session, and maintain the instance:
 
     macOS EC2 Gaming with Steam In-Home Streaming
 
@@ -39,9 +47,7 @@ Once the first time setup is complete, the `start` command automatically brings 
 
 # First-time configuration
 
-The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create an image that requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
-
-These steps assume that you already have an Amazon AWS account, and have generated credentials from the AWS Console.
+The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create a reusable image. These steps assume that you already have an Amazon AWS account, and have generated credentials from the AWS Console.
 
 From a terminal:
 
@@ -76,6 +82,7 @@ Edit `C:\Program Files\OpenVPN\config\server.ovpn` and add `cipher none` to the 
 - Login and save your password
 - Go to Settings -> In-Home Streaming -> Advanced Host Options and enable 'Hardware Encoding' and 'Prioritize network traffic'
 - Install and run several of the games you intend to play to `Z:\`. This performs first-time installation, avoiding the redistributable installation overhead. Delete local files once you're done
+- Exit Steam from the system tray, otherwise Steam will forget your password when the instance next starts
 
 ## Steam remote install to ephemeral storage
 
