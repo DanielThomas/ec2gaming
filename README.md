@@ -124,16 +124,6 @@ WIP - need to figure out how to allow sync that doesn't delete files if they're 
 
 Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
 
-## Steam client configuration
-
-Back on your Mac, got to Steam Home-Streaming settings, and:
-
-- Set the client options to 'Beautiful'
-- Under Advanced Client Options:
-    - Limit bandwidth to 30MBit/s; I've found that the automatic setting is far too conservative when remote streaming
-    - Ensure that 'Enable hardware decoding' is enabled
-    - Optionally limit the resolution
-
 ## Final steps
 
 - Run `ec2gaming snapshot` to snapshot the EBS volume and create your AMI
@@ -144,6 +134,16 @@ Back on your Mac, got to Steam Home-Streaming settings, and:
     administrator
     <new password>
     ```
+
+## Steam client configuration
+
+On your Mac, go to Steam Home-Streaming settings and:
+
+- Set the client options to 'Beautiful'
+- Under Advanced Client Options:
+    - Limit bandwidth to 30MBit/s; I've found that the automatic setting is far too conservative when remote streaming
+    - Ensure that 'Enable hardware decoding' is enabled
+    - Optionally limit the resolution
 
 # Gaming!
 
