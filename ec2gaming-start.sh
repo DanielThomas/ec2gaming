@@ -16,9 +16,8 @@ describe_security_group() {
 
 BOOTSTRAP=0
 
-# Get the current lowest price for the GPU machine we want (we'll be bidding a cent above)
 echo -n "Getting lowest g2.2xlarge bid... "
-PRICE="$(aws ec2 describe-spot-price-history --instance-types g2.2xlarge --product-descriptions "Windows" --start-time "$(date +%s)" | jq --raw-output '.SpotPriceHistory[].SpotPrice' | sort | head -1)"
+PRICE=$(./ec2gaming-price.sh)
 echo "$PRICE"
 
 SPOT_PRICE_BUFFER=$(cat ec2gaming.spot)
