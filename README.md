@@ -121,7 +121,7 @@ https://www.reddit.com/r/cloudygamer/comments/59245r/nvidia_driver_package_37563
 
 ## Install TightVNC
 
-The NVIDIA control panel won't work via a RDP session, it appears that some games (such as Civilization 6) have problems changing the resolution unless you do it via a TightVNC session (https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/):
+The NVIDIA control panel won't work via a RDP session, it appears that some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have problems changing the resolution unless you do it via a TightVNC session:
 
 - Install TightVNC from http://www.tightvnc.com/download.php
 - Configure the password to match your administrator password
