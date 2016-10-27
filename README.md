@@ -8,8 +8,7 @@ These scripts improve the ergonomics of gaming on EC2, and simplify the [first-t
 
 On first `start` the scripts:
 
-- Bootstrap from the public ec2gaming AMI
-- Creates security groups
+- Bootstrap an instance from the public ec2gaming AMI, including creating security groups
 - Launches RDP automatically
 
 Once the first time setup is complete, `start` then:
@@ -117,6 +116,15 @@ http://www.nvidia.com/download/driverResults.aspx/108323/en-us
 See here for background:
 
 https://www.reddit.com/r/cloudygamer/comments/59245r/nvidia_driver_package_37563_unable_to_detect/
+
+## Install TightVNC
+
+The NVIDIA control panel won't work via a RDP session, it appears that some games (such as Civilization 6) have problems changing the resolution unless you do it via a TightVNC session (https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/):
+
+- Install TightVNC from http://www.tightvnc.com/download.php
+- Configure the password to match your administrator password
+
+Note that it seems like setting the password during initial setup doesn't always work ("Server is not configured properly"), so you might need to go to the TightVNC tray icon, unset and reset the passwords to get a connection.
 
 ## Cloud sync My Documents
 

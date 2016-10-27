@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
 
@@ -11,13 +12,14 @@ if [ -z ${1+x} ]; then
     echo "stop      Stop gaming"
     echo
     echo "Maintenance commands"
-    echo "rdp       Remote desktop connection"
+    echo "rdp       Remote desktop connection (no VPN, requires login)"
     echo "snapshot  Snapshot the instance and recreate AMI"
+    echo "vnc       VNC session (requires VPN, automatic login)"
     echo
     echo "All supported commands"
     find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'
     echo
-    echo "For additional help, go to https://github.com/DanielThomas/ec2gaming#help"
+    echo "For help, go to https://www.reddit.com/r/cloudygamer/"
     exit
 fi
 

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-open vnc://10.8.0.1
+USER=$(head -1 ec2gaming.auth)
+PASSWD=$(tail -1 ec2gaming.auth)
+open "vnc://$USER:$PASSWD@10.8.0.1"
