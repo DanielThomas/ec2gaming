@@ -164,7 +164,7 @@ On your Mac, go to Steam Home-Streaming settings and:
 
 # Periodic maintenance
 
-This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an institituional bias ;) ). You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
+This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an [institituional bias](http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html) ;). You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
 
 # Help
 
