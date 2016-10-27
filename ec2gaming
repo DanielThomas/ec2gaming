@@ -2,6 +2,8 @@
 #!/usr/bin/env bash
 cd "$(dirname "$0")" || exit
 
+COMMANDS=($(find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'))
+
 if [ -z ${1+x} ]; then
     echo "macOS EC2 Gaming with Steam In-Home Streaming"
     echo
@@ -17,10 +19,17 @@ if [ -z ${1+x} ]; then
     echo "vnc       VNC session (requires VPN, automatic login)"
     echo
     echo "All supported commands"
-    find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'
+    printf '%s\n' "${COMMANDS[@]}"
     echo
     echo "For help, go to https://www.reddit.com/r/cloudygamer/"
     exit
 fi
 
-./ec2gaming-$1.sh
+if [[ ! " ${COMMANDS[@]} " =~ " ${1} " ]]; then
+    echo "Unknown command '$1'. Supported commands:"
+    printf '%s\n' "${COMMANDS[@]}"
+    exit 1
+else
+    ./ec2gaming-$1.sh
+fi
+
