@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+source "$(dirname "$0")/ec2gaming.header"
 
 # Verify that the gaming stane actually exists (and that there's only one)
 INSTANCES=$(aws ec2 describe-instances --filters Name=instance-state-code,Values=16 Name=instance-type,Values=g2.2xlarge)

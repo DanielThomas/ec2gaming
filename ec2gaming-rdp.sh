@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+source "$(dirname "$0")/ec2gaming.header"
 
 echo "Starting Remote Desktop..."
 IP=$(./ec2gaming-instance-ip.sh)

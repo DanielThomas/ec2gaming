@@ -35,6 +35,7 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
     All supported commands
     instance-ip
     instance
+    price
     rdp
     snapshot
     start
@@ -45,6 +46,10 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
     vpnup
 
     For help, go to https://www.reddit.com/r/cloudygamer/
+
+# Configuration
+
+Use `ec2gaming.cfg` to configure options such as the bid price over the minimum price.
 
 # First-time configuration
 

@@ -1,18 +1,5 @@
 #!/bin/bash
-
-set -e
-
-describe_gaming_image() {
-  aws ec2 describe-images --owner "$1" --filters Name=name,Values=ec2gaming
-}
-
-num_images() {
-  echo "$1" | jq '.Images | length'
-}
-
-describe_security_group() {
-  aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | select (.GroupName == "'"$1"'") | .GroupId'
-}
+source "$(dirname "$0")/ec2gaming.header"
 
 BOOTSTRAP=0
 
@@ -20,9 +7,10 @@ echo -n "Getting lowest g2.2xlarge bid... "
 PRICE=$(./ec2gaming-price.sh)
 echo "$PRICE"
 
-SPOT_PRICE_BUFFER=$(cat ec2gaming.spot)
 FINAL_SPOT_PRICE=$(bc <<< "$PRICE + $SPOT_PRICE_BUFFER")
 echo "Setting price for spot instance at $FINAL_SPOT_PRICE ($SPOT_PRICE_BUFFER higher than lowest spot price)"
+
+exit
 
 echo -n "Looking for the ec2gaming AMI... "
 AMI_SEARCH=$(describe_gaming_image self)

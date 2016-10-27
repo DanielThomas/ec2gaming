@@ -1,6 +1,4 @@
-
 #!/usr/bin/env bash
-cd "$(dirname "$0")" || exit
 
 COMMANDS=($(find . -name 'ec2gaming-*.sh' | sed 's/.*ec2gaming-//;s/\.sh//'))
 
@@ -32,4 +30,3 @@ if [[ ! " ${COMMANDS[@]} " =~ " ${1} " ]]; then
 else
     ./ec2gaming-$1.sh
 fi
-
