@@ -4,7 +4,7 @@ Scripts to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](h
 
 # Features
 
-These scripts improve the ergonomics of gaming on EC2, and simplify the first-time setup of your AMI. After following the first-time configuration below, the instance requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
+These scripts improve the ergonomics of gaming on EC2, and simplify the [first-time setup](#first-time-configuration) of your AMI. After following the first-time configuration below, the instance requires zero intervention on startup, allows Steam remote installs and minimizes the amount of time game install take.
 
 On first `start` the scripts:
 
