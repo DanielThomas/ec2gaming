@@ -1,6 +1,6 @@
 # ec2gaming - macOS EC2 Gaming
 
-Scripts to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
+Scripts and first-time setup instructions to make macOS EC2 gaming simple and reliable, based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # Features
 
