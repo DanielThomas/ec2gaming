@@ -47,7 +47,10 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
 
 # First-time configuration
 
-The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create a reusable image. These steps assume that you already have an Amazon AWS account, and have generated credentials from the AWS Console.
+The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create a reusable image. These steps assume that you already have:
+
+- Homebrew and Homebrew Cask (but feel free to install the required software any way you like)
+- An Amazon AWS account, and have generated credentials from the AWS Console
 
 From a terminal:
 
