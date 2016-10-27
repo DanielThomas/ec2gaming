@@ -2,8 +2,6 @@
 
 set -e
 
-SPOT_PRICE_BUFFER=0.10
-
 describe_gaming_image() {
   aws ec2 describe-images --owner "$1" --filters Name=name,Values=ec2gaming
 }
@@ -23,8 +21,9 @@ echo -n "Getting lowest g2.2xlarge bid... "
 PRICE="$(aws ec2 describe-spot-price-history --instance-types g2.2xlarge --product-descriptions "Windows" --start-time "$(date +%s)" | jq --raw-output '.SpotPriceHistory[].SpotPrice' | sort | head -1)"
 echo "$PRICE"
 
+SPOT_PRICE_BUFFER=$(cat ec2gaming.spot)
 FINAL_SPOT_PRICE=$(bc <<< "$PRICE + $SPOT_PRICE_BUFFER")
-echo "Setting price for spot instance at $FINAL_SPOT_PRICE"
+echo "Setting price for spot instance at $FINAL_SPOT_PRICE ($SPOT_PRICE_BUFFER higher than lowest spot price)"
 
 echo -n "Looking for the ec2gaming AMI... "
 AMI_SEARCH=$(describe_gaming_image self)

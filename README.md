@@ -65,6 +65,11 @@ From a terminal:
 - Run `aws configure` to configure your AWS credentials and region
 - Run `ec2gaming start` to bootstrap an instance
 
+Keep in mind that everything runs on Spot instances, so your instance can be terminated at any time the price outpaces your bid, so:
+
+- Consider running your first-time setup in the evening, where demand is low; or in a region with lower demand, and then copy the AMI using the AWS Console to your preferred gaming region
+- Temporarily increasing the value in the `ec2gaming.spot` file to increase your bid over the current minimum spot bid
+
 ## Windows configuration
 
 Once the instance is running, a RDP session will be opened automatically:
