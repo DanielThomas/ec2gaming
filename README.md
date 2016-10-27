@@ -52,6 +52,8 @@ The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and
 From a terminal:
 
 - Clone this repository to a convenient location and put it on the `PATH`
+    - Even if you're not familiar with `git`, it's useful to be able to `pull` to update
+    - I use `~/.ec2gaming` via my [dotfiles](https://github.com/DanielThomas/dotfiles)
 - Install required components using Homebrew:
 
     ```
@@ -67,7 +69,7 @@ From a terminal:
 
 Once the instance is running, a RDP session will be opened automatically:
 
-- Login using the `administrator` account with the password `rRmbgYum8g` and change the password.
+- Login using the `administrator` account with the password `rRmbgYum8g` and change the password
 - Run Windows Update
 
 Note that EBS is super-slow at startup as blocks come off the snapshot, so expect the instance to be sluggish as it warms up. It only affects file operations on `C:\` and won't affect gaming performance later.
@@ -144,7 +146,7 @@ Back on your Mac, got to Steam Home-Streaming settings, and:
 
 # Periodic maintenance
 
-This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an instituional bias ;) ). You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
+This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an institituional bias ;) ). You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
 
 # Help
 
