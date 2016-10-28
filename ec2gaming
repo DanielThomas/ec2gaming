@@ -20,7 +20,9 @@ if [ -z ${1+x} ]; then
     echo "instance  Get the instance id"
     echo "ip        Get the IP address of the instance"
     echo "price     Get the current lowest spot price"
+    echo "reboot    Reboot the instance"
     echo "snapshot  Snapshot the instance and recreate AMI"
+    echo "terminate Terminate the instance"
     echo
     echo "All supported commands"
     printf '%s\n' "${COMMANDS[@]}"
