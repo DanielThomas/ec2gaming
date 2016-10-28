@@ -27,16 +27,24 @@ The `ec2gaming` launcher provides helpful commands to ease starting a gaming ses
     start     Start gaming
     stop      Stop gaming
 
-    Maintenance commands
+    Remote access commands
     rdp       Remote desktop connection (no VPN, requires login)
-    snapshot  Snapshot the instance and recreate AMI
     vnc       VNC session (requires VPN, automatic login)
 
+    EC2 commands
+    instance  Get the instance id
+    ip        Get the IP address of the instance
+    price     Get the current lowest spot price
+    reboot    Reboot the instance
+    snapshot  Snapshot the instance and recreate AMI
+    terminate Terminate the instance
+
     All supported commands
-    instance-ip
     instance
+    ip
     price
     rdp
+    reboot
     snapshot
     start
     stop
@@ -117,16 +125,6 @@ Use Autologin to set the instance to automatically login, so Steam starts automa
 
 https://technet.microsoft.com/en-us/sysinternals/autologon.aspx
 
-## Update NVIDIA drivers
-
-Driver 373.06 is the latest driver version that has the K520 included in the device list, later versions are missing `DEV_118A` completely:
-
-http://www.nvidia.com/download/driverResults.aspx/108323/en-us
-
-See here for background:
-
-https://www.reddit.com/r/cloudygamer/comments/59245r/nvidia_driver_package_37563_unable_to_detect/
-
 ## Install TightVNC
 
 There are several advantages to using VNC over RDP:
@@ -134,13 +132,31 @@ There are several advantages to using VNC over RDP:
 - You don't need to use the logout shortcut to preserve the console session, you just close the VNC viewer
 - It turns out to be really difficult persist the password for an RDP session to allow automatic login using an rdp file
 - The NVIDIA control panel won't work via a RDP session, and it can be useful to have it available
-- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have can't change the resolution, and you need to set the Windows resolution via VNC instead
+- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have can't change the resolution, and you need to set the Windows resolution via VNC instead (see above)
 
 TightVNC appears best choice, both UltraVNC and Open RealVNC were super flaky, so:
 
 - Install TightVNC from http://www.tightvnc.com/download.php
 - Configure the password to match your administrator password. Note that it seems like setting the password during initial setup doesn't always work ("Server is not configured properly"), so you might need to go to the TightVNC tray icon, unset and reset the passwords to get a connection
-- Connect to the instance with VNC (`ec2gaming vnc`) and change the Windows resolution to the maximum resolution you intend to use for gaming
+
+## Configure Display Driver
+
+The GRID K520 is a Virtual GPU which has support for a wide range of resolutions, but is notably missing a configuration for effective resolutions on retina displays (such as 1440x900 on a 15" MacBook Pro) which are usually the best resolutions for gaming on a Retina display to get the right UI scale, etc. The driver also identifies a large number of refresh rates supported, which makes selecting resolutions in games tedious, and it's not possible to use the NVIDIA Control Panel to add custom resolutions, I'm assuming because of the virtual nature of the display.
+
+Thanks to [this great page](http://derrick.mameworld.info/docs/Tutorial/VideoModes/Custom_Video_Modes.html), I created `NV_MODE` settings for the most common 16:9 and 16:10 resolutions:
+
+Driver 373.06 is the latest driver version that has the K520 included in the device list, later versions are missing `DEV_118A` completely:
+
+- Download the driver from http://www.nvidia.com/download/driverResults.aspx/108323/en-us
+- Run the installer
+- Run regedit and under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Video` locate the device with the `NV_Modes` setting (it'll in a `{guid}/0000` key)
+- Edit the `NV_Modes` key and set it to:
+
+```
+{*}S 1024x640x16,32 1280x720x16,32 1280x800x16,32 1440x900x16,32 1680x1050x16,32 1920x1080x16,32 1920x1200x16,32 2880x1800x16,32=1;
+```
+- Restart Windows and attach a VNC session (`ec2gaming vnc`)
+- Right-click the desktop, select Screen resolution and select the highest available resolution
 
 ## Cloud sync My Documents
 
@@ -168,20 +184,6 @@ On your Mac, go to Steam Home-Streaming settings and:
     - Limit bandwidth to 30MBit/s; I've found that the automatic setting is far too conservative when remote streaming
     - Ensure that 'Enable hardware decoding' is enabled
     - Optionally limit the resolution
-
-## Game resolutions
-
-For the best results, you'll want to configure games to use a resolution that matches the aspect ratio of your computer. For instance, the 15" MacBook Pro has a ratio of 16:10, making these resolutions possible choices:
-
-- 2880 x 1800 (native Retina)
-- 1920 x 1200
-- 1680 x 1050
-- 1280 x 800
-- 1024 x 640
-
-I've found a great resolution for gaming natively on the MacBook is half the retina resolution (1440 x 900), particularly for games with raster graphics, however the display on the instance is identified as an analog display, and looks like that means the NVIDIA control panel won't let you add custom resolutions. 
-
-I'll update this section if I work out how to add that as a resolution.
 
 # Gaming!
 
