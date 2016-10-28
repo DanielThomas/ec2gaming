@@ -134,7 +134,7 @@ There are several advantages to using VNC over RDP:
 - You don't need to use the logout shortcut to preserve the console session, you just close the VNC viewer
 - It turns out to be really difficult persist the password for an RDP session to allow automatic login using an rdp file
 - The NVIDIA control panel won't work via a RDP session, and it can be useful to have it available
-- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have problems changing the resolution unless you do it via a VNC session
+- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have can't change the resolution, and you need to set the Windows resolution via VNC instead
 
 TightVNC appears best choice, both UltraVNC and Open RealVNC were super flaky, so:
 
@@ -180,7 +180,9 @@ For the best results, you'll want to configure games to use a resolution that ma
 - 1280 x 800
 - 1024 x 640
 
-A great resolution for gaming natively on the MacBook is half the retina resolution (1440 x 900), however the display on the instance is identified as an analog display, and looks like that means the NVIDIA control panel won't let you add custom resolutions. If I figure out how to add a custom resolution, I'll update this section.
+I've found a great resolution for gaming natively on the MacBook is half the retina resolution (1440 x 900), particularly for games with raster graphics, however the display on the instance is identified as an analog display, and looks like that means the NVIDIA control panel won't let you add custom resolutions. 
+
+I'll update this section if I work out how to add that as a resolution.
 
 # Gaming!
 
