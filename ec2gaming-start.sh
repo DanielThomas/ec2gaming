@@ -3,7 +3,7 @@ source "$(dirname "$0")/ec2gaming.header"
 
 BOOTSTRAP=0
 
-echo -n "Getting lowest g2.2xlarge bid... "
+echo -n "Getting lowest $INSTANCE_TYPE bid... "
 PRICE_AND_ZONE=($(./ec2gaming-price.sh))
 PRICE=${PRICE_AND_ZONE[0]}
 ZONE=${PRICE_AND_ZONE[1]}
@@ -44,7 +44,7 @@ SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances --spot-price "$FINAL_SPOT_PRIC
   {
     \"SecurityGroupIds\": [\"$EC2_SECURITY_GROUP_ID\"],
     \"ImageId\": \"$AMI_ID\",
-    \"InstanceType\": \"g2.2xlarge\",
+    \"InstanceType\": \"$INSTANCE_TYPE\",
     \"Placement\": {
       \"AvailabilityZone\": \"$ZONE\"
     }
