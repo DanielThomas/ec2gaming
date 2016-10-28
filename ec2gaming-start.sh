@@ -10,8 +10,6 @@ echo "$PRICE"
 FINAL_SPOT_PRICE=$(bc <<< "$PRICE + $SPOT_PRICE_BUFFER")
 echo "Setting price for spot instance at $FINAL_SPOT_PRICE ($SPOT_PRICE_BUFFER higher than lowest spot price)"
 
-exit
-
 echo -n "Looking for the ec2gaming AMI... "
 AMI_SEARCH=$(describe_gaming_image self)
 if [ "$(num_images "$AMI_SEARCH")" -eq "0" ]; then
