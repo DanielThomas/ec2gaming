@@ -132,7 +132,7 @@ There are several advantages to using VNC over RDP:
 - You don't need to use the logout shortcut to preserve the console session, you just close the VNC viewer
 - It turns out to be really difficult persist the password for an RDP session to allow automatic login using an rdp file
 - The NVIDIA control panel won't work via a RDP session, and it can be useful to have it available
-- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) have can't change the resolution, and you need to set the Windows resolution via VNC instead (see above)
+- Some games (such as [Civilization 6](https://www.reddit.com/r/cloudygamer/comments/58uaic/resolution_locked_on_civ_6/)) can't change the resolution above 1024x768 by default, and you need to set the Windows resolution via VNC instead (detailed in the next step)
 
 TightVNC appears best choice, both UltraVNC and Open RealVNC were super flaky, so:
 
