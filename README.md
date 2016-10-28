@@ -143,7 +143,7 @@ TightVNC appears best choice, both UltraVNC and Open RealVNC were super flaky, s
 
 The GRID K520 is a Virtual GPU which has support for a wide range of resolutions, but is notably missing a configuration for effective resolutions on retina displays (such as 1440x900 on a 15" MacBook Pro) which are usually the best resolutions for gaming on a Retina display to get the right UI scale, etc. The driver also identifies a large number of refresh rates supported, which makes selecting resolutions in games tedious, and it's not possible to use the NVIDIA Control Panel to add custom resolutions, I'm assuming because of the virtual nature of the display.
 
-Thanks to [this great page](http://derrick.mameworld.info/docs/Tutorial/VideoModes/Custom_Video_Modes.html), I created `NV_MODE` settings for the most common 16:9 and 16:10 resolutions:
+Thanks to [this great page](http://derrick.mameworld.info/docs/Tutorial/VideoModes/Custom_Video_Modes.html), I created `NV_Modes` settings for the most common 16:9 and 16:10 resolutions:
 
 Driver 373.06 is the latest driver version that has the K520 included in the device list, later versions are missing `DEV_118A` completely:
 
