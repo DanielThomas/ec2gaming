@@ -79,7 +79,7 @@ From a terminal:
 Keep in mind that everything runs on Spot instances, so your instance can be terminated at any time the price outpaces your bid, so:
 
 - Consider running your first-time setup in the evening, where demand is low; or in a region with lower demand, and then copy the AMI using the AWS Console to your preferred gaming region
-- Temporarily increasing the value in the `ec2gaming.spot` file to increase your bid over the current minimum spot bid
+- Temporarily increasing the `SPOT_PRICE_BUFFER` setting to increase your bid over the current minimum spot bid
 - Snapshot after each significant step
 
 ## Windows configuration
