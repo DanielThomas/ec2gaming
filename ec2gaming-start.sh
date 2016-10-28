@@ -4,8 +4,10 @@ source "$(dirname "$0")/ec2gaming.header"
 BOOTSTRAP=0
 
 echo -n "Getting lowest g2.2xlarge bid... "
-PRICE=$(./ec2gaming-price.sh)
-echo "$PRICE"
+PRICE_AND_ZONE=($(./ec2gaming-price.sh))
+PRICE=${PRICE_AND_ZONE[0]}
+ZONE=${PRICE_AND_ZONE[1]}
+echo "$PRICE in $ZONE"
 
 FINAL_SPOT_PRICE=$(bc <<< "$PRICE + $SPOT_PRICE_BUFFER")
 echo "Setting price for spot instance at $FINAL_SPOT_PRICE ($SPOT_PRICE_BUFFER higher than lowest spot price)"
@@ -42,7 +44,10 @@ SPOT_INSTANCE_ID=$(aws ec2 request-spot-instances --spot-price "$FINAL_SPOT_PRIC
   {
     \"SecurityGroupIds\": [\"$EC2_SECURITY_GROUP_ID\"],
     \"ImageId\": \"$AMI_ID\",
-    \"InstanceType\": \"g2.2xlarge\"
+    \"InstanceType\": \"g2.2xlarge\",
+    \"Placement\": {
+      \"AvailabilityZone\": \"$ZONE\"
+    }
   }" | jq --raw-output '.SpotInstanceRequests[0].SpotInstanceRequestId')
 echo "$SPOT_INSTANCE_ID"
 
