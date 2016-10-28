@@ -9,12 +9,14 @@ if [ -z ${1+x} ]; then
     echo "usage: ec2gaming <command>"
     echo
     echo "Gaming commands"
-    echo "start     Start gaming"
-    echo "stop      Stop gaming"
+    echo "start     Start gaming - starts instance, VPN and Steam"
+    echo "stop      Stop gaming - stops instance and VPN"
     echo
     echo "Remote access commands"
     echo "rdp       Remote desktop connection (no VPN, requires login)"
     echo "vnc       VNC session (requires VPN, automatic login)"
+    echo "vpndown   Disconnect VPN"
+    echo "vpnup     Connect VPN"
     echo
     echo "EC2 commands"
     echo "instance  Get the instance id"
