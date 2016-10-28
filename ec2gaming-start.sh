@@ -58,7 +58,7 @@ echo "done"
 
 echo -n "Waiting for instance IP... "
 aws ec2 wait instance-running --instance-ids "$INSTANCE_ID"
-IP=$(./ec2gaming-instance-ip.sh)
+IP=$(./ec2gaming-ip.sh)
 echo "$IP"
 
 echo -n "Waiting for server to become available... "

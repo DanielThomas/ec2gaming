@@ -12,10 +12,15 @@ if [ -z ${1+x} ]; then
     echo "start     Start gaming"
     echo "stop      Stop gaming"
     echo
-    echo "Maintenance commands"
+    echo "Remote access commands"
     echo "rdp       Remote desktop connection (no VPN, requires login)"
-    echo "snapshot  Snapshot the instance and recreate AMI"
     echo "vnc       VNC session (requires VPN, automatic login)"
+    echo
+    echo "EC2 commands"
+    echo "instance  Get the instance id"
+    echo "ip        Get the IP address of the instance"
+    echo "price     Get the current lowest spot price"
+    echo "snapshot  Snapshot the instance and recreate AMI"
     echo
     echo "All supported commands"
     printf '%s\n' "${COMMANDS[@]}"
