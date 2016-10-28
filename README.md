@@ -74,10 +74,13 @@ From a terminal:
 - Run `aws configure` to configure your AWS credentials and region
 - Run `ec2gaming start` to bootstrap an instance
 
+## EC2 Spot Instances
+
 Keep in mind that everything runs on Spot instances, so your instance can be terminated at any time the price outpaces your bid, so:
 
 - Consider running your first-time setup in the evening, where demand is low; or in a region with lower demand, and then copy the AMI using the AWS Console to your preferred gaming region
 - Temporarily increasing the value in the `ec2gaming.spot` file to increase your bid over the current minimum spot bid
+- Snapshot after each significant step
 
 ## Windows configuration
 
@@ -166,6 +169,18 @@ On your Mac, go to Steam Home-Streaming settings and:
     - Limit bandwidth to 30MBit/s; I've found that the automatic setting is far too conservative when remote streaming
     - Ensure that 'Enable hardware decoding' is enabled
     - Optionally limit the resolution
+
+## Game resolutions
+
+For the best results, you'll want to configure games to use a resolution that matches the aspect ratio of your computer. For instance, the 15" MacBook Pro has a ratio of 16:10, making these resolutions possible choices:
+
+- 2880 x 1800 (native Retina)
+- 1920 x 1200
+- 1680 x 1050
+- 1280 x 800
+- 1024 x 640
+
+A great resolution for gaming natively on the MacBook is half the retina resolution (1440 x 900), however the display on the instance is identified as an analog display, and looks like that means the NVIDIA control panel won't let you add custom resolutions. If I figure out how to add a custom resolution, I'll update this section.
 
 # Gaming!
 
