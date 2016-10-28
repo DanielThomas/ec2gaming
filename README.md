@@ -139,9 +139,8 @@ There are several advantages to using VNC over RDP:
 TightVNC appears best choice, both UltraVNC and Open RealVNC were super flaky, so:
 
 - Install TightVNC from http://www.tightvnc.com/download.php
-- Configure the password to match your administrator password
-
-Note that it seems like setting the password during initial setup doesn't always work ("Server is not configured properly"), so you might need to go to the TightVNC tray icon, unset and reset the passwords to get a connection.
+- Configure the password to match your administrator password. Note that it seems like setting the password during initial setup doesn't always work ("Server is not configured properly"), so you might need to go to the TightVNC tray icon, unset and reset the passwords to get a connection
+- Connect to the instance with VNC (`ec2gaming vnc`) and change the Windows resolution to the maximum resolution you intend to use for gaming
 
 ## Cloud sync My Documents
 
