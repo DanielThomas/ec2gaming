@@ -61,7 +61,9 @@ Use `ec2gaming.cfg` to configure options such as the bid price over the minimum 
 
 # First-time configuration
 
-The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create a reusable image. These steps assume that you already have:
+The goal is to take the base [ec2gaming AMI](http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html) and create a reusable image. This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an [institituional bias](http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html) ;)
+
+These steps assume that you already have:
 
 - Homebrew and Homebrew Cask (but feel free to install the required software any way you like)
 - An Amazon AWS account, and have generated credentials from the AWS Console
@@ -80,6 +82,13 @@ From a terminal:
 
 - Install Microsoft Remote Desktop from the App Store
 - Run `aws configure` to configure your AWS credentials and region
+- Create a `ec2gaming.auth` file in the `ec2gaming` location (it's `.gitignored`) with two lines, the `administrator` username and the password you plan to use to login to the instance. It's used for later configuration and needs to be available before you proceed to the next step:
+
+    ```
+    administrator
+    <new password>
+    ```
+
 - Run `ec2gaming start` to bootstrap an instance
 
 ## EC2 Spot Instances
@@ -111,13 +120,17 @@ Edit `C:\Program Files\OpenVPN\config\server.ovpn` and add `cipher none` to the 
 - Install and run several of the games you intend to play to `Z:\`. This performs first-time installation, avoiding the redistributable installation overhead. Delete local files once you're done
 - Exit Steam from the system tray, otherwise Steam will forget your password when the instance next starts
 
-## Steam remote install to ephemeral storage
+## Ephemeral storage
 
-The Steam remote install feature assumes the default Stream library, even if a second library is available and set to default. So, to install games to the emphemeral storage on `Z:\` remotely, we create a junction on instance startup:
+The `Z:\` is SSD instance storage, that's destroyed when the instance is stopped, but is the ideal place for installing games and data for your gaming session thanks to it's high performance.
 
-- Copy `bootstrap/steamapps-junction.bat` to `C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+The Steam remote install feature assumes the default Stream library, even if a second library is available and set to default. So, to install games to the emphemeral storage on `Z:\` remotely, we create a junction on instance startup. Unfortunately, you can't install games larger than the freespace on `C:` with this approach, but in that case you can use RDP/VNC to install the game.
 
-Unfortunately, you can't install games larger than the freespace on `C:` with this approach, but in that case you can use RDP and this avoids having to RDP for every installation.
+Steam Cloud will also do a decent job of saving, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync. So, we also want to configure a periodic sync to S3 to save Documents from `Z:\Documents`.
+
+- Install the 64-bit AWS CLI from https://aws.amazon.com/cli/
+- Copy `ec2gaming.bat` to `C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`. This file creates the junction, performs an initial one-way S3 sync, and schedules a task that runs every minute to keep the directory in sync
+- Right-click the Documents folder from the file explorer, and set the location to `Z:\Documents`
 
 ## Windows automatic login
 
@@ -158,22 +171,10 @@ Driver 373.06 is the latest driver version that has the K520 included in the dev
 - Restart Windows and attach a VNC session (`ec2gaming vnc`)
 - Right-click the desktop, select Screen resolution and select the highest available resolution
 
-## Cloud sync My Documents
-
-WIP - need to figure out how to allow sync that doesn't delete files if they're missing on the host.
-
-Steam Cloud will do a decent job, but it's good to have coverage for games that don't cloud save, or if your instance terminates and Steam doesn't have a chance to perform the cloud sync.
-
 ## Final steps
 
 - Run `ec2gaming snapshot` to snapshot the EBS volume and create your AMI
 - Run `ec2gaming terminate` to terminate the instance
-- Create a `ec2gaming.auth` file in the `ec2gaming` location (it's `.gitignored`) with two lines, it'll be used to authenticate the VPN for gaming:
-
-    ```
-    administrator
-    <new password>
-    ```
 
 ## Steam client configuration
 
@@ -194,7 +195,7 @@ On your Mac, go to Steam Home-Streaming settings and:
 
 # Periodic maintenance
 
-This configuration differs from the original blog post, in that the goal is to keep the AMI immutable from session to session (call it an [institituional bias](http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html) ;). You'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
+Because we treat the AMI as immutable, you'll want to periodically update Steam, run Windows Update etc. and re-snapshot and replace your AMI using the `ec2gaming snapshot` command.
 
 # Help
 

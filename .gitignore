@@ -1,3 +1,5 @@
 ec2gaming.ovpn
 ec2gaming.rdp
 ec2gaming.auth
+ec2gaming.bat
+ec2gaming-permissionpolicy.json
