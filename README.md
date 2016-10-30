@@ -1,4 +1,4 @@
-# ec2gaming - macOS EC2 Gaming
+# ec2gaming - EC2 Gaming on macOS
 
 Provides command line tools that makes gaming on EC2 simple and reliable. Includes steps to create an AMI that requires no intervention on startup, allows Steam remote installs and minimizes the amount of time game installs take.
 
