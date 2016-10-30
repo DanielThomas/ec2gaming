@@ -1,7 +1,10 @@
 #!/bin/bash
 set -e
 cd "$(dirname "$0")" || exit
-source ec2gaming.cfg
+source ../ec2gaming.cfg
+
+USERNAME=$(head -1 ../ec2gaming.auth)
+PASSWORD=$(tail -1 ../ec2gaming.auth)
 
 describe_gaming_image() {
   aws ec2 describe-images --owner "$1" --filters Name=name,Values=ec2gaming

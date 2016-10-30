@@ -3,10 +3,6 @@ source "$(dirname "$0")/ec2gaming.header"
 
 BOOTSTRAP=0
 
-if [ ! -f ec2gaming.auth ]; then
-    echo "ec2gaming.auth file not found!"
-fi
-
 echo -n "Getting lowest $INSTANCE_TYPE bid... "
 PRICE_AND_ZONE=($(./ec2gaming-price.sh))
 PRICE=${PRICE_AND_ZONE[0]}
@@ -50,9 +46,7 @@ if ! aws s3api head-bucket --bucket "$BUCKET" &> /dev/null; then
   REGION=$(aws configure get region)
   aws s3api create-bucket --bucket "$BUCKET" --region "$REGION" --create-bucket-configuration LocationConstraint="$REGION" > /dev/null
 fi
-USERNAME=$(head -1 ec2gaming.auth)
-PASSWORD=$(tail -1 ec2gaming.auth)
-sed "s/BUCKET/$BUCKET/g;s/USERNAME/$USERNAME/g;s/PASSWORD/$PASSWORD/g" ec2gaming.bat.template > ec2gaming.bat
+sed "s/BUCKET/$BUCKET/g;s/USERNAME/$USERNAME/g;s/PASSWORD/$PASSWORD/g" ec2gaming.bat.template > ../ec2gaming.bat
 echo "$BUCKET"
 
 PROFILE_NAME="ec2gaming"
