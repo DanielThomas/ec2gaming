@@ -3,6 +3,10 @@ source "$(dirname "$0")/ec2gaming.header"
 
 BOOTSTRAP=0
 
+if [ ! -f ec2gaming.auth ]; then
+    echo "ec2gaming.auth file not found!"
+fi
+
 echo -n "Getting lowest $INSTANCE_TYPE bid... "
 PRICE_AND_ZONE=($(./ec2gaming-price.sh))
 PRICE=${PRICE_AND_ZONE[0]}
