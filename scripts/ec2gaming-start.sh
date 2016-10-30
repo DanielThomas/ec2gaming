@@ -58,6 +58,7 @@ if ! aws iam get-instance-profile --instance-profile-name ec2gaming &> /dev/null
   aws iam put-role-policy --role-name "$PROFILE_NAME" --policy-name "$PROFILE_NAME" --policy-document file://ec2gaming-permissionpolicy.json > /dev/null
   aws iam create-instance-profile --instance-profile-name "$PROFILE_NAME"  > /dev/null
   aws iam add-role-to-instance-profile --instance-profile-name "$PROFILE_NAME" --role-name "$PROFILE_NAME" > /dev/null
+  aws iam wait instance-profile-exists --instance-profile-name ec2gaming
 fi
 INSTANCE_PROFILE_ARN=$(aws iam get-instance-profile --instance-profile-name ec2gaming | jq -r '.InstanceProfile.Arn')
 echo "$INSTANCE_PROFILE_ARN"
