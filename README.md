@@ -173,7 +173,9 @@ Driver 373.06 is the latest driver version that has the K520 included in the dev
 
 ## Image cleanup
 
-Before creating an AMI, Amazon recommends deleting temporary files, defragmenting your hard drive, and zeroing out free space to reduce start times. This step is pretty time consuming and you can come back and do this at any time, so it's a good idea to wait until you're confident your image is in a good baseline state before you do this step. Reducing the size of your snapshot will also keep you in the free tier, and keeping free space high means you won't run into the remote install limitation mentioned above.
+Before creating an AMI, Amazon recommends deleting temporary files, defragmenting your hard drive, and zeroing out free space to reduce start times. Reducing the size of your snapshot could also keep you in the free tier if you're in your first AWS year, and keeping free space high means you won't run into the remote install free space limitation mentioned above.
+
+This step is pretty time consuming and you can come back and do this at any time, so it's a good idea to wait until you're confident your image is in a good baseline state before you do this step.
 
 ### Free Space
 
