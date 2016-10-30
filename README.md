@@ -2,7 +2,7 @@
 
 Provides command line tools that makes gaming on EC2 simple and reliable. Includes steps to create an AMI that requires no intervention on startup, allows Steam remote installs and minimizes the amount of time game installs take.
 
-Full documentation is available on the [wiki](https://github.com/DanielThomas/ec2gaming/wiki) Based on [Larry Gadea's](http://lg.io/) excellent work.
+Full documentation is available on the [wiki](https://github.com/DanielThomas/ec2gaming/wiki). Based on [Larry Gadea's](http://lg.io/) excellent work.
 
 # Before you begin
 
