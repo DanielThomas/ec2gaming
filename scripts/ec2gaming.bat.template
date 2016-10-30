@@ -4,4 +4,5 @@ md Z:\SteamLibrary\steamapps
 cmd /c mklink /j "C:\Program Files (x86)\Steam\steamapps" Z:\SteamLibrary\steamapps
 md Z:\Documents
 aws s3 sync Z:\Documents s3://BUCKET/Documents
+if %errorlevel% neq 0 exit /b %errorlevel%
 schtasks /Create /RU USERNAME /RP PASSWORD /F /SC MINUTE /MO 1 /TN "Sync Documents with S3" /TR "aws s3 sync Z:\Documents s3://ec2gaming-639801188054/Documents --delete"
