@@ -171,6 +171,23 @@ Driver 373.06 is the latest driver version that has the K520 included in the dev
 - Restart Windows and attach a VNC session (`ec2gaming vnc`)
 - Right-click the desktop, select Screen resolution and select the highest available resolution
 
+## Image cleanup
+
+Before creating an AMI, Amazon recommends deleting temporary files, defragmenting your hard drive, and zeroing out free space to reduce start times. This step is pretty time consuming and you can come back and do this at any time, so it's a good idea to wait until you're confident your image is in a good baseline state before you do this step. Reducing the size of your snapshot will also keep you in the free tier, and keeping free space high means you won't run into the remote install limitation mentioned above.
+
+### Free Space
+
+    - Follow the `Dism.exe` steps in this article to clean up the WinSxS to free space: https://technet.microsoft.com/en-us/library/dn251565.aspx
+    - Use WinDirStat to look for other low hanging fruit, such as temporary files, installers, logs, etc.
+
+### Defragment
+
+- Optimize `C:\` with the defragmenter tool.
+
+### Zero free space
+
+- Run https://technet.microsoft.com/en-us/sysinternals/sdelete.aspx with the `-z` parameter
+
 ## Final steps
 
 - Run `ec2gaming snapshot` to snapshot the EBS volume and create your AMI
