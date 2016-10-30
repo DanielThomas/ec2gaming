@@ -179,8 +179,8 @@ This step is pretty time consuming and you can come back and do this at any time
 
 ### Free Space
 
-    - Follow the `Dism.exe` steps in this article to clean up the WinSxS to free space: https://technet.microsoft.com/en-us/library/dn251565.aspx
-    - Use WinDirStat to look for other low hanging fruit, such as temporary files, installers, logs, etc.
+- Follow the `Dism.exe` steps in this article to clean up the WinSxS to free space: https://technet.microsoft.com/en-us/library/dn251565.aspx
+- Use WinDirStat to look for other low hanging fruit, such as temporary files, installers, logs, etc.
 
 ### Defragment
 
