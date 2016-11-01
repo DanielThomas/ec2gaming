@@ -1,9 +1,9 @@
 package main
 
 import (
-	"os"
 	"fmt"
 	"github.com/urfave/cli"
+	"os"
 )
 
 func main() {
@@ -12,16 +12,16 @@ func main() {
 	app.Usage = "macOS EC2 Gaming with Steam In-Home Streaming"
 	app.Commands = []cli.Command{
 		{
-			Name: "start",
+			Name:  "start",
 			Usage: "starts instance, VPN and Steam",
 			Action: func(*cli.Context) error {
-				fmt.Println("start")
-				return nil
-
+				spotPrice, err := fmt.Println(SpotPrice())
+				fmt.Println(spotPrice)
+				return err
 			},
 		},
 		{
-			Name: "stop",
+			Name:  "stop",
 			Usage: "stops instance & vpn",
 			Action: func(*cli.Context) error {
 				fmt.Println("stop")
