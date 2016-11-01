@@ -1,14 +1,15 @@
 package main
 
 import (
-	"github.com/aws/aws-sdk-go/aws/session"
 	"fmt"
-	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/ec2"
 	"sort"
 	"strconv"
 	"time"
 )
+
 type SpotPriceHistory []*ec2.SpotPrice
 
 func (spotPriceHistory SpotPriceHistory) Len() int {
@@ -45,9 +46,9 @@ func SpotPrice() (string, error) {
 	svc := ec2.New(session, &aws.Config{Region: aws.String(UsWest1)})
 
 	result, err := svc.DescribeSpotPriceHistory(&ec2.DescribeSpotPriceHistoryInput{
-		StartTime: &then,
-		EndTime: &now,
-		InstanceTypes: instanceTypes,
+		StartTime:           &then,
+		EndTime:             &now,
+		InstanceTypes:       instanceTypes,
 		ProductDescriptions: productDescriptions,
 	})
 	if err != nil {
