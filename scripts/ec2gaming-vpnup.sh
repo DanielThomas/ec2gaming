@@ -15,4 +15,4 @@ else
     sed "s#IP#$IP#g;s#AUTH#$AUTH#g" ec2gaming.ovpn.template > "$BACKING_CONFIG"
 fi
 
-osascript ec2gaming-vpnup.scpt
+osascript "ec2gaming-vpnup.$VPN_CLIENT.scpt"
