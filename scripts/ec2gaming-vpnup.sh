@@ -25,7 +25,7 @@ fi
 if [ $CONFIG_EXISTS -eq 0 ]; then
   sed "s#IP#$IP#g;s#AUTH#$AUTH#g" ec2gaming.ovpn.template > ec2gaming.ovpn
   open ec2gaming.ovpn
-  echo "Waiting 10 seconds for import..."
+  echo "Waiting 10 seconds for import...\n"
   sleep 10
 fi
 
