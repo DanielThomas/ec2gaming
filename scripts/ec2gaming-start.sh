@@ -44,6 +44,11 @@ BUCKET="ec2gaming-$ACCOUNT_ID"
 if ! aws s3api head-bucket --bucket "$BUCKET" &> /dev/null; then
   echo -n "not found. Creating... "
   REGION=$(aws configure get region)
+
+  if REGION == 'us-east-1'; then
+    REGION=''
+  fi
+
   aws s3api create-bucket --bucket "$BUCKET" --region "$REGION" --create-bucket-configuration LocationConstraint="$REGION" > /dev/null
 fi
 sed "s/BUCKET/$BUCKET/g;s/USERNAME/$USERNAME/g;s/PASSWORD/$PASSWORD/g" ec2gaming.bat.template > ../ec2gaming.bat
