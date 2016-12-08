@@ -3,4 +3,5 @@ ec2gaming.bat
 scripts/ec2gaming-permissionpolicy.json
 scripts/ec2gaming.ovpn
 scripts/ec2gaming.rdp
+ec2gaming
 
