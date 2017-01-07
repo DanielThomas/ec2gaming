@@ -5,4 +5,4 @@ cmd /c mklink /j "C:\Program Files (x86)\Steam\steamapps" Z:\SteamLibrary\steama
 md Z:\Documents
 aws s3 sync Z:\Documents s3://BUCKET/Documents --region REGION
 if %errorlevel% neq 0 exit /b %errorlevel%
-schtasks /Create /RU USERNAME /RP PASSWORD /F /SC MINUTE /MO 1 /TN "Sync Documents with S3" /TR "aws s3 sync Z:\Documents s3://ec2gaming-639801188054/Documents --delete"
+schtasks /Create /RU USERNAME /RP PASSWORD /F /SC MINUTE /MO 1 /TN "Sync Documents with S3" /TR "aws s3 sync Z:\Documents s3://ec2gaming-639801188054/Documents --delete --region REGION"
